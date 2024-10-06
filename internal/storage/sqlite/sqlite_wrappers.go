@@ -1,9 +1,5 @@
 package sqlite
 
-import (
-	_ "github.com/mattn/go-sqlite3"
-)
-
 func (s *Storage) GetLicenseById(userId string) (*UserLicense, error) {
 	return s.getLicense(`SELECT id, license, UserId, createdAt, updatedAt, expiresAt, hwid, status FROM UserLicense WHERE UserId = ?`, userId, "UserId")
 }

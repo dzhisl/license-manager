@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"os"
 
 	"golang.org/x/exp/slog" // Change this
@@ -18,6 +19,7 @@ func main() {
 
 	storage, err := sqlite.New(cfg.StoragePath)
 	if err != nil {
+		log.Fatalf("failed to initialize storage: %s", sl.Err(err))
 		logger.Error("failed to initialize storage", sl.Err(err))
 		os.Exit(1)
 	}
